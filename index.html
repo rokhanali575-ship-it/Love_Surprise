@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Secure Love System ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:black;
+color:#00ffcc;
+overflow:hidden;
+}
+
+/* ===== COUNTDOWN ===== */
+#countdown{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+font-size:20px;
+color:#00ffcc;
+text-shadow:0 0 10px #00ffcc;
+z-index:10;
+}
+
+/* ===== LOCK SCREEN ===== */
+#lock{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+input{
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:8px;
+text-align:center;
+}
+
+button{
+margin-top:10px;
+padding:10px 25px;
+border:none;
+border-radius:20px;
+background:#00ffcc;
+color:black;
+cursor:pointer;
+font-weight:bold;
+}
+
+#error{
+color:red;
+margin-top:10px;
+}
+
+/* ===== MAIN ===== */
+#main{
+display:none;
+height:100vh;
+background:radial-gradient(circle,#001f1f,#000);
+animation:fade 2s ease;
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+.hero{
+padding-top:50px;
+text-align:center;
+}
+
+.hero img{
+width:180px;
+height:180px;
+border-radius:50%;
+border:4px solid #00ffcc;
+box-shadow:0 0 30px #00ffcc;
+animation:beat 1.5s infinite;
+object-fit:cover;
+}
+
+@keyframes beat{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.1);}
+}
+
+h1{
+margin-top:15px;
+color:#00ffcc;
+}
+
+/* ===== LOVE TEXT ===== */
+#msg{
+max-width:800px;
+margin:30px auto;
+padding:20px;
+line-height:1.8;
+font-size:16px;
+white-space:pre-line;
+color:#aaffff;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="countdown"></div>
+
+<!-- LOCK -->
+<div id="lock">
+
+<h1>🔐 Secure Love Access</h1>
+<p>Enter Password to Unlock Surprise ❤️</p>
+
+<input type="password" id="pass" placeholder="Password">
+<button onclick="check()">Unlock</button>
+
+<div id="error"></div>
+
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+<div class="hero">
+
+<img src="images/hoorab.jpg">
+
+<h1>HAPPY BIRTHDAY HOORAB ❤️</h1>
+
+<div id="msg"></div>
+
+</div>
+
+</div>
+
+<script>
+
+/* ===== PASSWORD ===== */
+let code = "hoorab";
+
+function check(){
+
+let p = document.getElementById("pass").value;
+
+if(p === code){
+
+document.getElementById("lock").style.display="none";
+document.getElementById("main").style.display="block";
+
+typeText();
+
+}else{
+document.getElementById("error").innerHTML="Wrong Password ❌";
+}
+
+}
+
+/* ===== LONG LOVE MESSAGE (UPGRADED) ===== */
+
+const text = `
+💖 Dear Hoorab...
+
+Today is not just a date...
+Today is a reminder that someone in this world
+is very special to my heart ❤️
+
+I may not always say it out loud...
+But deep inside,
+you mean more than words can explain.
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+✨ You are my peace in chaos
+✨ You are my smile in silence
+✨ You are my calm in stress
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+Sometimes I wonder...
+
+How can one person bring so much softness
+into someone else's thoughts?
+
+And then I realize...
+
+Maybe that's just YOU.
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+On your birthday I just want to say:
+
+May Allah always keep you safe,
+happy,
+healthy,
+and surrounded by good people.
+
+May every dream you have come true.
+
+And may your smile never fade ❤️
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+You are not just a name in my life...
+
+You are a feeling I will never forget.
+
+💖 Happy Birthday Hoorab 💖
+`;
+
+let i=0;
+
+function typeText(){
+
+if(i < text.length){
+document.getElementById("msg").innerHTML += text.charAt(i);
+i++;
+setTimeout(typeText,25);
+}
+
+}
+
+/* ===== COUNTDOWN ===== */
+const target = new Date("July 9, 2026 00:00:00").getTime();
+
+setInterval(()=>{
+
+let now = new Date().getTime();
+let diff = target - now;
+
+if(diff <= 0){
+document.getElementById("countdown").innerHTML="🎉 HAPPY BIRTHDAY HOORAB ❤️";
+return;
+}
+
+let d = Math.floor(diff/(1000*60*60*24));
+let h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+let m = Math.floor((diff%(1000*60*60))/(1000*60));
+let s = Math.floor((diff%(1000*60))/1000);
+
+document.getElementById("countdown").innerHTML =
+`⏳ ${d}d ${h}h ${m}m ${s}s`;
+
+},1000);
+
+</script>
+
+</body>
+</html>
